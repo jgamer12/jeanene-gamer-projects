@@ -1,0 +1,180 @@
+﻿@model  CarMastery.UI.Models.InventoryQueryViewModel
+@{
+    ViewBag.Title = "Used";
+}
+
+<h2><strong>Used Vehicles</strong></h2>
+
+
+
+<div class="row">
+    <div class="col-xs-12" id="bordered-content">
+        <h5><strong>Quick Search</strong></h5>
+        <form id="searchForm" class="form-inline">
+            <div class="row" id="search-query">
+
+                <div class="form-group col-xs-3">
+                    <label for="makeModelYear"></label>
+                    <input type="text" class="form-control" id="makeModelYear" placeholder="Enter make, model or year">
+                </div>
+
+                <div class="form-group col-xs-2" id="align-right">
+                    <label for="minPrice">Price</label>
+                    @Html.DropDownList("minPrice", new SelectList(Model.MinPriceSelectList, "Text", "Value"), "No Min", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group col-xs-2">
+                    <label for="maxPrice"></label>
+                    @Html.DropDownList("maxPrice", new SelectList(Model.MaxPriceSelectList, "Text", "Value"), "No Max", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group col-xs-2" id="align-right">
+                    <label for="minYear">Year</label>
+                    @Html.DropDownList("minYear", new SelectList(Model.MinYearSelectList, "Text", "Value"), "No Min", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group col-xs-2">
+                    <label for="maxYear"></label>
+                    @Html.DropDownList("maxYear", new SelectList(Model.MaxYearSelectList, "Text", "Value"), "No Max", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row col-xs-4" id="search-query">
+            </div>
+
+            <div class="row col-xs-3" id="search-query">
+                <button id="btnSearch" class="btn-block">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <h3 id="report-title"><strong>Search Results</strong></h3>
+</div>
+
+<div id="searchResults">
+
+
+</div>
+
+
+
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#report-title').hide();
+            $("#searchForm").submit(function (e) {
+                search();
+                return false;
+            });
+        });
+
+        function search() {
+            var contentRows = $('#searchResults');
+            var params;
+            var imagePath = '@Url.Content("~/Images/")';
+            var detailsPath = '@Url.Action("Details", "Inventory")/';
+
+            params = 'newUsed=Used' + '&makeModelYear=' + $('#makeModelYear').val() + '&minPrice=' + $('#minPrice').val() + '&maxPrice=' +
+                $('#maxPrice').val() + '&minYear=' + $('#minYear').val() + '&maxYear=' + $('#maxYear').val();
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:49771/api/vehicles/search?' + params,
+                success: function (results) {
+                    $('#searchResults').empty();
+                    $('#report-title').show();
+
+                    $.each(results, function (index, vehicle) {
+                        var html = '<div id="bordered-content">';
+                        html +='<div class="row">';
+                        html += '<div class="col-xs-12">';
+                        html += '<p><strong>' + vehicle.VehicleYear + ' ' +vehicle.MakeDescription + ' ' + vehicle.ModelDescription + '</strong></p>';
+                        html += '</div>';
+                        html += '</div>';
+
+                        html += '<div class="container" id="vehicle-container">';
+
+                        html += '<div class="col-md-2 car-placeholder" id="car-image">';
+                        html += '<p><img src="' + imagePath + vehicle.VehiclePicture + '" style = "width: 95px; height: auto;"/></p>';
+                        html += '</div>'
+
+                        html += '<div id="vehicle-row">';
+                        html += '<div class="col-md-1">';
+                        html += '<p id="align-right"><strong>BodyStyle:</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-2">';
+                        html += '<p><strong>' + vehicle.BodyStyleDescription + '</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-1">';
+                        html += '<p id="align-right"><strong>Interior:</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-2">';
+                        html += '<p><strong>' + vehicle.InteriorColorDescription + '</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-2">';
+                        html += '<p id="align-right"><strong>Sale Price:</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-2">';
+                        html += '<p><strong>' + vehicle.VehicleSalesPriceFormatted + '</strong></p>';
+                        html += '</div>';
+                        html += '</div>';
+
+                        html += '<div id="vehicle-row">';
+                        html += '<div class="col-md-1">';
+                        html += '<p id="align-right"><strong>Trans:</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-2">';
+                        html += '<p><strong>' + vehicle.TransmissionDescription + '</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-1">';
+                        html += '<p id="align-right"><strong>Mileage:</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-2">';
+                        html += '<p><strong>' + vehicle.VehicleMileageFormatted + '</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-2">';
+                        html += '<p id="align-right"><strong>MSRP:</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-2">';
+                        html += '<p><strong>' + vehicle.VehicleMSRPFormatted + '</strong></p>';
+                        html += '</div>';
+                        html += '</div>';
+
+                        html += '<div id="vehicle-row">';
+                        html += '<div class="col-md-1">';
+                        html += '<p id="align-right"><strong>Color:</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-2">';
+                        html += '<p><strong>' + vehicle.BodyColorDescription + '</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-1">';
+                        html += '<p id="align-right"><strong>VIN #:</strong></p>';
+                        html += '</div>';
+                        html += '<div class="col-md-2">';
+                        html += '<p><strong>' + vehicle.VehicleVIN + '</strong></p>';
+                        html += '</div>';
+                        html += '<div id = "align-right" class="col-md-3">'
+                        html += '<input type="button" class="btn btn-default" id="details" value="Details" onclick="location.href=&apos;' + detailsPath + vehicle.VehicleId + '&apos;">' ;
+                        html += '</div>';
+                        html += '</div>';
+
+                        html += '</div> <!--container-->';
+                        html += '</div> <!--bordered-content-->';
+
+                        $('#searchResults').append(html);
+                        $('#makeModelYear').val('');
+                    });
+                },
+                error: function () {
+                    alert('Error performing search, try again later!')
+                }
+            });
+        }
+    </script>
+}
+
+

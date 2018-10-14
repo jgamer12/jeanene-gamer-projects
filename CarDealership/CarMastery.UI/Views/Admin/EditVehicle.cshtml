@@ -1,0 +1,247 @@
+﻿@model  CarMastery.UI.Models.EditVehiclesViewModel
+@{
+    ViewBag.Title = "EditVehicle";
+}
+
+<h2><strong>EditVehicle</strong></h2>
+
+
+@using (Html.BeginForm("EditVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-vertical", role = "form", id = "frmEditVehicle" }))
+{
+    @Html.ValidationSummary();
+    @Html.HiddenFor(m => m.VehicleToEdit.VehicleId)
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label for="makeId">Make</label>
+            @Html.DropDownList("makeId", new SelectList(Model.Makes, "MakeId", "MakeDescription", Model.SelectedMake), new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label for="modelId">Model</label>
+            @Html.DropDownListFor(m => m.VehicleToEdit.ModelId, new SelectList(" "), new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    @Html.HiddenFor(m => m.VehicleToEdit.ModelId, new { @class = "selectedModelId" })
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label>Type</label>
+            @Html.DropDownListFor(m => m.VehicleToEdit.VehicleTypeId, Model.VehicleType, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Body Style</label>
+            @Html.DropDownListFor(m => m.VehicleToEdit.BodyStyleId, Model.BodyStyle, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label>Year</label>
+            @Html.TextBoxFor(m => m.VehicleToEdit.VehicleYear, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Transmission</label>
+            @Html.DropDownListFor(m => m.VehicleToEdit.TransmissionId, Model.Transmission, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label>Color</label>
+            @Html.DropDownListFor(m => m.VehicleToEdit.BodyColorId, Model.BodyColor, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Interior</label>
+            @Html.DropDownListFor(m => m.VehicleToEdit.InteriorColorId, Model.InteriorColor, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label>Mileage</label>
+            @Html.TextBoxFor(m => m.VehicleToEdit.VehicleMileage, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>VIN #</label>
+            @Html.TextBoxFor(m => m.VehicleToEdit.VehicleVIN, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label>MSRP</label>
+            @Html.TextBoxFor(m => m.VehicleToEdit.VehicleMSRP, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Sale Price</label>
+            @Html.TextBoxFor(m => m.VehicleToEdit.VehicleSalesPrice, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label>Description</label>
+            @Html.TextAreaFor(m => m.VehicleToEdit.VehicleDescription, new { @rows = 5, @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <p><img src="@Url.Content("~/Images/" + Model.VehicleToEdit.VehiclePicture)" style = "width: 95px; height: auto;" /></p>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label>Replace Picture</label>
+            <input id="ReplacePicture" name="ReplacePicture" type="file" class="form-control" />
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <div>
+                @Html.CheckBox("VehicleToEdit.VehicleIsFeatured", Model.VehicleToEdit.VehicleIsFeatured ?? false)
+                @Html.Label("VehicleToEdit.VehicleIsFeatured", "Feature this vehicle")
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <div>
+                <input type="button" class="btn btn-danger" id="vehicle-delete" value="Delete" onclick="location.href='@Url.Action("DeleteVehicle", "Admin", new { id = Model.VehicleToEdit.VehicleId })'" />
+                <button class="btn btn-primary">Save</button>
+            </div>
+        </div>
+
+    </div>
+}
+
+
+
+            @section scripts
+    {
+                <script>
+        $(document).ready(function () {
+
+            var contentRows = $('#VehicleToEdit_ModelId');
+            var selectedModel = $('.selectedModelId').val();
+            param = 'makeId=' + $('#makeId').val();
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:49771/api/models/search?' + param,
+                success: function (data) {
+                    $('#VehicleToEdit_ModelId').empty();
+
+                    $.each(data, function (index, reportLine) {
+                        if (reportLine.ModelId == selectedModel) {
+                            var row = '<option selected="selected" value="';
+                            row += reportLine.ModelId;
+                            row += '">'
+                            row += reportLine.ModelDescription;
+                            row += '</option>';
+                            contentRows.append(row);
+                        } else {
+                            var row = '<option value="';
+                            row += reportLine.ModelId;
+                            row += '">'
+                            row += reportLine.ModelDescription;
+                            row += '</option>';
+                            contentRows.append(row);
+                        }
+                    });
+                },
+                error: function () {
+                    alert('Error performing search, try again later!')
+                }
+            });
+
+            $('#makeId').change(function () {
+                var contentRows = $('#VehicleToEdit_ModelId');
+                param = 'makeId=' + $('#makeId').val();
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:49771/api/models/search?' + param,
+                    success: function (data) {
+                        $('#VehicleToEdit_ModelId').empty();
+
+                        $.each(data, function (index, reportLine) {
+                            var row = '<option value="';
+                            row += reportLine.ModelId;
+                            row += '">'
+                            row += reportLine.ModelDescription;
+                            row += '</option>';
+                            contentRows.append(row);
+                        });
+                    },
+                    error: function () {
+                        alert('Error performing search, try again later!')
+                    }
+                });
+            })
+
+                $('#frmEditVehicle').validate({
+                    rules: {
+                        'VehicleToEdit.VehicleYear': {
+                            required: true,
+                            number: true,
+                            min: 2001
+                        },
+                        'VehicleToEdit.VehicleMileage': {
+                            required: true,
+                            number: true,
+                            min: 1
+                        },
+                        'VehicleToEdit.VehicleVIN': {
+                            required: true
+                        },
+                        'VehicleToEdit.VehicleMSRP': {
+                            required: true,
+                            number: true,
+                            min: 1
+                        },
+                        'VehicleToEdit.VehicleSalesPrice': {
+                            required: true,
+                            number: true,
+                            min: 1
+                        },
+                        'VehicleToEdit.VehicleDescription': {
+                            required: true
+                        }
+                    } //rules
+                }); // form validation
+            }); // document ready
+                </script>
+            }
+
+
+
+

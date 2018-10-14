@@ -1,0 +1,81 @@
+﻿@model CarMastery.UI.Models.ModelsViewModel
+
+@{
+    ViewBag.Title = "Models";
+}
+
+<h2><strong>Models</strong></h2>
+
+<div id="bordered-content">
+    @using (Html.BeginForm("Models", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-inline", role = "form", id = "frmAddModel" }))
+    {
+        @Html.ValidationSummary();
+        <div class="form-group">
+            <label>New Model</label>
+            @Html.TextBoxFor(m => m.ModelToAdd.ModelDescription, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Make</label>
+            @Html.DropDownListFor(m => m.ModelToAdd.MakeId, Model.Makes, new { @class = "form-control" })
+        </div>
+
+        <button class="btn btn-primary">Save</button>
+    }
+</div>
+
+
+<div class="table-responsive">
+    @if (Model.ModelsList.Any())
+    {
+        <table class="table table-striped" style="width:750px" id="bordered-content">
+            <thead>
+                <tr>
+                    <th id="TableHeader">
+                        Make
+                    </th>
+                    <th id="TableHeader">
+                        Model
+                    </th>
+                    <th id="TableHeader">
+                        Date Added
+                    </th>
+                    <th id="TableHeader">
+                        User
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var vehicleModel in Model.ModelsList)
+                {
+                    <tr>
+                        <td>@vehicleModel.MakeDescription</td>
+                        <td>@vehicleModel.ModelDescription</td>
+                        <td>@vehicleModel.ModelDateAdded.ToString("MM/dd/yyyy")</td>
+                        <td>@vehicleModel.UserName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    { <p>There were no models.</p>}
+</div>
+
+@section scripts
+{
+    <script>
+       $(document).ready(function () {
+           $('#frmAddModel').validate({
+               rules: {
+                   'ModelToAdd.ModelDescription': {
+                       required: true,
+                       normalizer: function (value) {
+                           return $.trim(value);
+                       }
+                   }
+               }
+           });
+       });
+    </script>
+}

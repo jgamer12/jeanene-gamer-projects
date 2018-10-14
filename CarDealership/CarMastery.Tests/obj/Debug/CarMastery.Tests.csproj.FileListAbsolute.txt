@@ -1,0 +1,14 @@
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\obj\Debug\CarMastery.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\obj\Debug\CarMastery.Tests.csproj.CoreCompileInputs.cache
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\bin\Debug\CarMastery.Tests.dll.config
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\bin\Debug\CarMastery.Tests.dll
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\bin\Debug\CarMastery.Tests.pdb
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\bin\Debug\CarMastery.Data.dll
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\bin\Debug\CarMastery.Models.dll
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\bin\Debug\nunit.framework.dll
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\bin\Debug\CarMastery.Data.pdb
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\bin\Debug\CarMastery.Models.pdb
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\bin\Debug\nunit.framework.pdb
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\bin\Debug\nunit.framework.xml
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\obj\Debug\CarMastery.Tests.dll
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Tests\obj\Debug\CarMastery.Tests.pdb

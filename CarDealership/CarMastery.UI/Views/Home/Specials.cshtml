@@ -1,0 +1,22 @@
+﻿@model IEnumerable<CarMastery.Models.Tables.Specials>
+@{
+    ViewBag.Title = "Specials";
+}
+<h2><strong>Specials</strong></h2>
+
+
+@foreach (var special in Model)
+ {
+
+    <div class="row special-item">
+        <div class="col-xs-1 dollar-placeholder">
+            <p><img src="@Url.Content("~/Images/usd.PNG")" /></p>
+        </div>
+
+        <div class="col-xs-11">
+            <h4><strong>@special.SpecialTitle</strong></h4>
+            <p>@special.SpecialDescription</p>
+        </div>
+    </div>
+ }
+

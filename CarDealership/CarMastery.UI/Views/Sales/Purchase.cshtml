@@ -1,0 +1,254 @@
+﻿@model  CarMastery.UI.Models.PurchaseVehicleViewModel
+@{
+    ViewBag.Title = "Purchase";
+}
+
+<h2><strong> Purchase Vehicle</strong></h2>
+
+
+
+<div id="bordered-content">
+    <div class="row">
+        <div class="col-xs-12">
+            <p><strong>@Model.Vehicle.VehicleYear @Model.Vehicle.MakeDescription @Model.Vehicle.ModelDescription</strong></p>
+        </div>
+    </div>
+
+    <div class="container" id="vehicle-container">
+        <div class="col-md-2 car-placeholder">
+            <p><img src="@Url.Content("~/Images/" + Model.Vehicle.VehiclePicture)" style = "width: 95px; height: auto;"  /></p>
+        </div>
+        <div id="vehicle-row">
+            <div class="col-md-1">
+                <p id="align-right"><strong>BodyStyle:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.Vehicle.BodyStyleDescription</strong></p>
+            </div>
+
+            <div class="col-md-1">
+                <p id="align-right"><strong>Interior:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.Vehicle.InteriorColorDescription</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p id="align-right"><strong>Sale Price:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.Vehicle.VehicleSalesPriceFormatted</strong></p>
+            </div>
+        </div>
+
+        <div id="vehicle-row">
+            <div class="col-md-1">
+                <p id="align-right"><strong>Trans:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.Vehicle.TransmissionDescription</strong></p>
+            </div>
+
+            <div class="col-md-1">
+                <p id="align-right"><strong>Mileage:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.Vehicle.VehicleMileageFormatted</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p id="align-right"><strong>MSRP:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.Vehicle.VehicleMSRPFormatted</strong></p>
+            </div>
+        </div>
+
+        <div id="vehicle-row">
+            <div class="col-md-1">
+                <p id="align-right"><strong>Color:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.Vehicle.BodyColorDescription</strong></p>
+            </div>
+
+            <div class="col-md-1">
+                <p id="align-right"><strong>VIN #:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p id="vehicleVIN"><strong>@Model.Vehicle.VehicleVIN</strong></p>
+            </div>
+
+            <div class="col-md-2">
+
+            </div>
+
+            <div class="col-md-2">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="vehicle-container">
+
+        <div id="vehicle-row  ">
+            <div class="col-md-3">
+                <p id="align-right"><strong>Description:</strong></p>
+            </div>
+
+            <div class="col-md-9">
+                <p><strong>@Model.Vehicle.VehicleDescription</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2><strong> Sales Information</strong></h2>
+
+@using (Html.BeginForm("Purchase", "Sales", FormMethod.Post, new { @class = "form-vertical", role = "form", id = "frmPurchaseVehicle" }))
+{
+    @Html.ValidationSummary();
+
+    @Html.HiddenFor(m => m.Vehicle.VehicleMSRP)
+    @Html.HiddenFor(m => m.Vehicle.VehicleSalesPrice)
+    @Html.HiddenFor(m => m.Vehicle.VehicleId)
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label>First Name</label>
+            @Html.TextBoxFor(m => m.Customer.CustomerFirstName, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Last Name</label>
+            @Html.TextBoxFor(m => m.Customer.CustomerLastName, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label>Email</label>
+            @Html.TextBoxFor(m => m.Customer.CustomerEmail, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Phone</label>
+            @Html.TextBoxFor(m => m.Customer.CustomerPhone, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label>Street 1</label>
+            @Html.TextBoxFor(m => m.Customer.CustomerStreet1, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Street 2</label>
+            @Html.TextBoxFor(m => m.Customer.CustomerStreet2, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label>City</label>
+            @Html.TextBoxFor(m => m.Customer.CustomerCity, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>State</label>
+            @Html.DropDownListFor(m => m.Customer.StateId, Model.States, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label>ZipCode</label>
+            @Html.TextBoxFor(m => m.Customer.CustomerZipCode, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <hr style="border-color: black" />
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label>Purchase Price</label>
+            @Html.TextBoxFor(m => m.Sale.SaleAmount, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>PurchaseType</label>
+            @Html.DropDownListFor(m => m.Sale.FinancingId, Model.Financing, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <button class="btn btn-primary">Save</button>
+
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $('#frmPurchaseVehicle').validate({
+                rules: {
+                    'Customer.CustomerFirstName': {
+                        required: true
+                    },
+                    'Customer.CustomerLastName': {
+                        required: true
+                    },
+                    'Customer.CustomerEmail': {
+                        email: true
+                    },
+                    'Customer.CustomerPhone': {
+                        phoneUS: true
+                    },
+                    'Customer.CustomerStreet1': {
+                        required: true
+                    },
+                    'Customer.CustomerCity': {
+                        required: true
+                    },
+                    'Customer.CustomerZipCode': {
+                        required: true,
+                        minlength: 5,
+                        maxlength: 5,
+                        digits: true
+                    },
+                    'Sale.SaleAmount': {
+                        required: true,
+                        min: 1
+                    }
+                }
+            });
+        });
+
+        jQuery.validator.addMethod('phoneUS', function (phone_number, element) {
+            phone_number = phone_number.replace(/\s+/g, '');
+            return this.optional(element) || phone_number.length > 9 &&
+                phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+        }, 'Please enter a valid phone number.');
+    </script>
+}

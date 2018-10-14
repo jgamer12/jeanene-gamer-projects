@@ -1,0 +1,72 @@
+﻿@model  CarMastery.UI.Models.SpecialsViewModel
+@{
+    ViewBag.Title = "Specials";
+}
+
+<!--Admin-->
+<h2><strong>Specials</strong></h2>
+
+<div class="special-item">
+    @using (Html.BeginForm("Specials", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", id = "frmAddSpecial" }))
+    {
+        @Html.ValidationSummary();
+        <div class="form-group">
+            <label class="control-label col-sm-2">Title</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.SpecialToAdd.SpecialTitle, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2">Description</label>
+            <div class="col-sm-10">
+                @Html.TextAreaFor(m => m.SpecialToAdd.SpecialDescription, new { @rows = 5, @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-lg-1 sm-10">
+                <button class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    }
+</div>
+
+@foreach (var special in Model.SpecialsList)
+{
+    <div class="row special-item">
+        <div class="col-xs-1 dollar-placeholder">
+            <p><img src="@Url.Content("~/Images/usd.PNG")" /></p>
+        </div>
+
+        <div class="col-xs-11">
+            <input type="button" class="btn btn-danger" id ="special-delete" value="Delete" onclick="location.href='@Url.Action("DeleteSpecial", "Admin", new { id = @special.SpecialId })'" />
+            <h4><strong>@special.SpecialTitle</strong></h4>
+            <p>@special.SpecialDescription</p>
+        </div>
+    </div>
+}
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#frmAddSpecial').validate({
+                rules: {
+                    'SpecialToAdd.SpecialTitle': {
+                        required: true,
+                        normalizer: function (value) {
+                            return $.trim(value);
+                        }
+                    },
+                    'SpecialToAdd.SpecialDescription': {
+                        required: true,
+                        normalizer: function (value) {
+                            return $.trim(value);
+                        }
+                    }
+                }
+           });
+        });
+    </script>
+}

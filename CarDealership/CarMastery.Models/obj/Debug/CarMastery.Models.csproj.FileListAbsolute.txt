@@ -1,0 +1,6 @@
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Models\obj\Debug\CarMastery.Models.csprojResolveAssemblyReference.cache
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Models\obj\Debug\CarMastery.Models.csproj.CoreCompileInputs.cache
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Models\bin\Debug\CarMastery.Models.dll
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Models\bin\Debug\CarMastery.Models.pdb
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Models\obj\Debug\CarMastery.Models.dll
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\CarMastery\CarMastery.Models\obj\Debug\CarMastery.Models.pdb

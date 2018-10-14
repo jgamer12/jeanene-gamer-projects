@@ -1,0 +1,63 @@
+﻿@model CarMastery.UI.Models.HomeIndexViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container" >
+    <div class="jumbotron" style="background-color:aliceblue; margin-top: 30px" onclick="location.href='@Url.Action("Specials", "Home")'"  >
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+                @{
+                    var i = 0;
+                    foreach (var item in Model.SpecialsList)
+                    {
+                        var itemClass = i++ == 0 ? "item active" : "item";
+                        <div class="@itemClass">
+
+                            <div class="col-xs-1 dollar-placeholder">
+                                <p><img src="@Url.Content("~/Images/usd.PNG")" /></p>
+                            </div>
+
+                            <div class="col-xs-11">
+                                <h3><strong>@item.SpecialTitle</strong></h3>
+                                <p>@item.SpecialDescription</p>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<hr style="border-color: black" />
+<div class="row">
+    <div class="col-xs-12 ">
+        <h2><strong>Featured Vehicles</strong></h2>
+        @foreach (var vehicle in Model.FeaturedVehicles)
+        {
+        <div class="col.xs-12 col-sm-6 col-md-2" id="featured-homepage">
+            <p class="featuredVehicles"><img src="@Url.Content("~/Images/" + vehicle.VehiclePicture)" style = "width: 95px; height: auto;"  /></p>
+            <p class="featuredVehicles">@vehicle.VehicleYear @vehicle.MakeDescription @vehicle.ModelDescription</p>
+            <p class="featuredVehicles">@vehicle.VehicleSalesPrice.ToString("c0")</p>
+        </div>
+        }
+    </div>
+</div>
+
+@section scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $('.carousel-inner .item:first').addClass('active');
+            $('#myCarousel').carousel({
+                interval: 3000
+            });
+
+            $('#myCarousel').carousel('cycle');
+        })
+    </script>
+
+}

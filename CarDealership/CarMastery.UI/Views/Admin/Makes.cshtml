@@ -1,0 +1,74 @@
+﻿@model CarMastery.UI.Models.MakesViewModel
+
+@{
+    ViewBag.Title = "Makes";
+}
+
+<h2><strong>Makes</strong></h2>
+
+
+<div id="bordered-content">
+    @using (Html.BeginForm("Makes", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-inline", role = "form", id = "frmAddMake" }))
+    {
+        @Html.ValidationSummary();
+        <div class="form-group">
+            <label>New Make</label>
+            @Html.TextBoxFor(m => m.MakeToAdd.MakeDescription, new { @class = "form-control" })
+        </div>
+        <button class="btn btn-primary">Save</button>
+    }
+</div>
+
+
+<div class="table-responsive">
+    @if (Model.MakesList.Any())
+    {
+        <table class="table table-striped" style="width:750px" id="bordered-content" >
+            <thead>
+                <tr>
+                    <th id="TableHeader">
+                        Make
+                    </th>
+                    <th id="TableHeader">
+                        Date Added
+                    </th>
+                    <th id="TableHeader">
+                        User
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var make in Model.MakesList)
+                {
+                    <tr>
+                        <td>@make.MakeDescription</td>
+                        <td>@make.MakeDateAdded.ToString("MM/dd/yyyy")</td>
+                        <td>@make.UserName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>There were no makes.</p>
+    }
+</div>
+
+@section scripts
+{
+   <script>
+       $(document).ready(function () {
+           $('#frmAddMake').validate({
+               rules: {
+                   'MakeToAdd.MakeDescription': {
+                       required: true,
+                       normalizer: function (value) {
+                           return $.trim(value);
+                       }
+                   }
+               }
+           });
+       });
+   </script> 
+}

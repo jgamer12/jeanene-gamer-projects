@@ -1,0 +1,22 @@
+﻿@model CarMastery.Models.Tables.Specials
+
+@{
+    ViewBag.Title = "DeleteSpecial";
+}
+
+<h2><strong>Delete Confirmation</strong></h2>
+
+<div class="row">
+
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(s => s.SpecialId)
+            <p>Are you sure that you want to delete the special @Html.DisplayFor(s => s.SpecialTitle)? </p>
+            <button type="submit" class="btn btn-danger">Delete</button>
+            @Html.ActionLink("Cancel", "Specials", "Admin", null, new { @class = "btn btn-info" })
+        }
+    </div>
+
+</div>
+

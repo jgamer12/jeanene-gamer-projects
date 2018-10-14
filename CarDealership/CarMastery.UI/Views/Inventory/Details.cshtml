@@ -1,0 +1,128 @@
+﻿@model CarMastery.Models.Queries.VehicleSearchResult
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2><strong>Vehicle Details</strong></h2>
+
+<div id="bordered-content">
+    <div class="row">
+        <div class="col-xs-12">
+            <p><strong>@Model.VehicleYear @Model.MakeDescription @Model.ModelDescription</strong></p>
+        </div>
+    </div>
+
+    <div class="container" id="vehicle-container">
+        <div class="col-md-2 car-placeholder">
+            <p><img src="@Url.Content("~/Images/" + Model.VehiclePicture)" style = "width: 95px; height: auto;"  /></p>
+        </div>
+        <div id="vehicle-row">
+            <div class="col-md-1">
+                <p id="align-right"><strong>BodyStyle:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.BodyStyleDescription</strong></p>
+            </div>
+
+            <div class="col-md-1">
+                <p id="align-right"><strong>Interior:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.InteriorColorDescription</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p id="align-right"><strong>Sale Price:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.VehicleSalesPriceFormatted</strong></p>
+            </div>
+        </div>
+
+        <div id="vehicle-row">
+            <div class="col-md-1">
+                <p id="align-right"><strong>Trans:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.TransmissionDescription</strong></p>
+            </div>
+
+            <div class="col-md-1">
+                <p id="align-right"><strong>Mileage:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.VehicleMileageFormatted</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p id="align-right"><strong>MSRP:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.VehicleMSRPFormatted</strong></p>
+            </div>
+        </div>
+
+        <div id="vehicle-row">
+            <div class="col-md-1">
+                <p id="align-right"><strong>Color:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p><strong>@Model.BodyColorDescription</strong></p>
+            </div>
+
+            <div class="col-md-1">
+                <p id="align-right"><strong>VIN #:</strong></p>
+            </div>
+
+            <div class="col-md-2">
+                <p id="vehicleVIN"><strong>@Model.VehicleVIN</strong></p>
+            </div>
+
+            <div class="col-md-2">
+
+            </div>
+
+            <div class="col-md-2">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="vehicle-container">
+
+        <div id="vehicle-row  ">
+            <div class="col-md-3">
+                <p id="align-right"><strong>Description:</strong></p>
+            </div>
+
+            <div class="col-md-9">
+                <p><strong>@Model.VehicleDescription</strong></p>
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    @if (Model.VehicleIsSold.HasValue && @Model.VehicleIsSold == true)
+                    {
+                        <h4 id="contact-us" style="color: red;"><strong>Unavailable - Sold</strong></h4>
+                    }
+                    else
+                    {
+                        <input type="button" class="btn btn-default" id="contact-us" value="Contact Us" onclick="location.href='@Url.Action("Contact", "Home")'" />
+                    }                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

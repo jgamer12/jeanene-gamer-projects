@@ -1,0 +1,92 @@
+﻿@model CarMastery.UI.Models.InventoryReportViewModel
+@{
+    ViewBag.Title = "Inventory";
+}
+
+<h2><strong>Inventory Report</strong></h2>
+
+<h4 id="inventory-report-title"><strong>New Vehicles</strong></h4>
+
+<div class="table-responsive">
+    @if (Model.NewInventoryReport.Any())
+    {
+        <table class="table table-striped" style="width:750px" id="bordered-content">
+            <thead>
+                <tr>
+                    <th id="TableHeader">
+                        Year
+                    </th>
+                    <th id="TableHeader">
+                        Make
+                    </th>
+                    <th id="TableHeader">
+                        Model
+                    </th>
+                    <th id="TableHeader">
+                        Count
+                    </th>
+                    <th id="TableHeader">
+                        Stock Value
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reportLine in Model.NewInventoryReport)
+                {
+                    <tr>
+                        <td>@reportLine.VehicleYear</td>
+                        <td>@reportLine.MakeDescription</td>
+                        <td>@reportLine.ModelDescription</td>
+                        <td>@reportLine.Count</td>
+                        <td>@reportLine.StockValue.ToString("c0")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    { <p>There were no models.</p>}
+</div>
+
+<h4 id="report-title"><strong>Used Vehicles</strong></h4>
+
+<div class="table-responsive">
+    @if (Model.NewInventoryReport.Any())
+    {
+        <table class="table table-striped" style="width:750px" id="bordered-content">
+            <thead>
+                <tr>
+                    <th id="TableHeader">
+                        Year
+                    </th>
+                    <th id="TableHeader">
+                        Make
+                    </th>
+                    <th id="TableHeader">
+                        Model
+                    </th>
+                    <th id="TableHeader">
+                        Count
+                    </th>
+                    <th id="TableHeader">
+                        Stock Value
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reportLine in Model.UsedInventoryReport)
+                {
+                    <tr>
+                        <td>@reportLine.VehicleYear</td>
+                        <td>@reportLine.MakeDescription</td>
+                        <td>@reportLine.ModelDescription</td>
+                        <td>@reportLine.Count</td>
+                        <td>@reportLine.StockValue.ToString("c0")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    { <p>There were no models.</p>}
+</div>

@@ -1,0 +1,54 @@
+﻿@model CarMastery.UI.Models.UserReportViewModel
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2><strong>Users</strong></h2>
+
+<a>
+    @Html.ActionLink("Add a new User", "AddUser", "Admin", null, null)
+</a>
+
+<div class="table-responsive">
+    @if (Model.UsersReportList.Any())
+    {
+        <table class="table table-striped" style="width:750px" id="bordered-content">
+            <thead>
+                <tr>
+                    <th id="TableHeader">
+                        Last Name
+                    </th>
+                    <th id="TableHeader">
+                        First Name
+                    </th>
+                    <th id="TableHeader">
+                        Email
+                    </th>
+                    <th id="TableHeader">
+                        Role
+                    </th>
+                    <th id="TableHeader">
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reportLine in Model.UsersReportList)
+                
+                {
+                    <tr>
+                        <td>@reportLine.LastName</td>
+                        <td>@reportLine.FirstName</td>
+                        <td>@reportLine.Email</td>
+                        <td>@reportLine.Role</td>
+                        <td>@Html.ActionLink("edit", "EditUser", "Admin", new { id = reportLine.UserId }, null)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    { <p>There were no models.</p>}
+</div>
+

@@ -1,0 +1,100 @@
+﻿@model CarMastery.UI.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+
+<h2><strong>Contact Us</strong></h2>
+
+<div class="col-md-4">
+    @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "form-vertical", role = "form", id = "frmAddContact" }))
+    {
+        @Html.ValidationSummary();
+        <div class="form-group">
+            <label>First Name</label>
+            @Html.TextBoxFor(m => m.ContactToAdd.ContactUsFirstName, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            @Html.TextBoxFor(m => m.ContactToAdd.ContactUsLastName, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group" id="email">
+            <label>Email</label>
+            @Html.TextBoxFor(m => m.ContactToAdd.ContactUsEmail, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group" id="phone">
+            <label>Phone</label>
+            @Html.TextBoxFor(m => m.ContactToAdd.ContactUsPhone, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Message</label>
+            @Html.TextAreaFor(m => m.ContactToAdd.ContactUsMessage, new { @rows = 5, @class = "form-control"})
+        </div>
+
+        <div class="form-group">
+            <div>
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="col-md-8">
+
+    <div id="map">
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.841348091384!2d-91.99403968413827!3d41.00684557930102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87e668a14a05a965%3A0x1624cdbef5615ade!2s2603+W+Burlington+Ave%2C+Fairfield%2C+IA+52556!5e0!3m2!1sen!2sus!4v1533220614566" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+    </div>
+    <div id="address">
+        <p id="line-one">2603 West Burlington</p>
+        <p>Fairfield, IA 52556</p>
+    </div>
+
+    <div id="phone">
+        <p id="line-one">Sales:  111-111-1111</p>
+        <p>Service:  111-111-1111</p>
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $('#frmAddContact').validate({
+                rules: {
+                    'ContactToAdd.ContactUsFirstName': {
+                        required: true
+                    },
+                    'ContactToAdd.ContactUsLastName': {
+                        required: true
+                    },
+                    'ContactToAdd.ContactUsEmail': {
+                        email: true
+                    },
+                    'ContactToAdd.ContactUsPhone': {
+                        phoneUS: true
+                    },
+                    'ContactToAdd.ContactUsMessage': {
+                        required: true
+                    }
+                }
+            });
+        });
+
+        jQuery.validator.addMethod('phoneUS', function (phone_number, element) {
+            phone_number = phone_number.replace(/\s+/g, '');
+            return this.optional(element) || phone_number.length > 9 &&
+                phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+        }, 'Please enter a valid phone number.');
+    </script>
+}
+
+

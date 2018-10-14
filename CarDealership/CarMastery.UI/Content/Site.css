@@ -1,0 +1,128 @@
+﻿html {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 300px;
+}
+
+#align-right {
+    text-align: right;
+}
+
+.sales-report-title {
+    margin-top: 30px;
+    margin-left: -15px;
+}
+
+#report-title {
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+.navbar-left {
+    margin-right: 20px;
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+
+.featuredVehicles {
+    text-align: center;
+}
+
+.dollar-placeholder, .car-placeholder {
+    float: left;
+    margin-top: 10px;
+}
+
+.special-item {
+    width: 750px;
+    border: 2px solid black;
+    padding: 2px 2px, 2px, 2px;
+    margin-top: 20px;
+    margin-left: -15px;
+}
+
+.reports {
+    text-decoration-line: underline;
+    margin-top: 20px;
+    margin-bottom: 10px
+}
+
+#bordered-content {
+    border: 2px solid black;
+    padding: 10px 10px 10px 10px;
+    margin-top: 20px;
+}
+
+#featured-homepage {
+    border: 2px solid black;
+    padding: 10px 10px 10px 10px;
+    margin: 20px 30px 20px 30px;
+}
+
+thead {
+    border-top: black solid 2px;
+    background-color: darkgrey;
+}
+
+tbody {
+    border-bottom: black solid 2px;
+}
+
+td, th {
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+}
+
+#TableHeader {
+    padding: 0 0 0 8px;
+    border-bottom: 0;
+}
+
+#special-delete, #contact-us {
+    float: right;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+#line-one {
+    margin-top: 20px;
+    margin-bottom:0;
+}
+
+#map {
+    margin-top: 30px;
+}
+
+#myJumbotron {
+    background-color: lightblue;
+}
+
+#search-query, search-button {
+    margin-top: 10px;
+    margin-left: 0px
+}
+
+#vehicle-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
