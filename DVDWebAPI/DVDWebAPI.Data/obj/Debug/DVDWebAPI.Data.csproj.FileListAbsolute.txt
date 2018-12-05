@@ -1,0 +1,14 @@
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\bin\Debug\DVDWebAPI.Data.dll
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\bin\Debug\DVDWebAPI.Data.pdb
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\bin\Debug\DVDWebAPI.Models.dll
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\bin\Debug\DVDWebAPI.Models.pdb
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\obj\Debug\DVDWebAPI.Data.csprojResolveAssemblyReference.cache
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\obj\Debug\DVDWebAPI.Data.csproj.CoreCompileInputs.cache
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\obj\Debug\DVDWebAPI.Data.dll
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\obj\Debug\DVDWebAPI.Data.pdb
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\bin\Debug\DVDWebAPI.Data.dll.config
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\bin\Debug\EntityFramework.dll
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\bin\Debug\DVDWebAPI.Models.dll.config
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\bin\Debug\EntityFramework.xml
+C:\Users\Jeanie\Documents\bitbucket\jeanie-gamer-individual-work\DVDWebAPI\DVDWebAPI.Data\bin\Debug\EntityFramework.SqlServer.xml

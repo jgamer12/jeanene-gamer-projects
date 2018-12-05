@@ -1,0 +1,102 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+hr {
+    border-color: black;
+    border-width: 2px;
+    margin: 0em;
+}
+
+#create-DVD-button, #cancel-delete-button, #delete-button,
+    #cancel-button, #add-button, #search-button, #back-button,
+    #save-changes-button {
+    border-radius: 0px 0px 0px 0px;
+    border-color: black;
+    border-width: 2px;
+    color: black;
+    box-shadow: 5px 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#add-dvd-title, #add-release-year, #add-director, #add-rating, #add-notes, #search-term, #select-search-category,
+#edit-dvd-title, #edit-release-year, #edit-director, #edit-rating, #edit-notes {
+    border-radius: 0px 0px 0px 0px;
+    border-color: black;
+    border-width: 2px;
+    color: black;
+}
+
+#select-search-category {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+#search-term {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left:5px;
+}
+
+#search-button {
+    margin-left: 200px;
+}
+
+#modal-flex {
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
+#delete-button {
+    margin-left: 50px;
+}
+
+.modal-header {
+    border-bottom: 2px solid black;
+    padding: 3px 0px 3px 5px;
+}
+
+.modal-footer {
+    border-top:  2px solid black;
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: underline;
+}
+
+thead {
+    border-top: black solid 2px;
+    background-color: darkgrey;
+}
+
+tbody {
+    border-bottom: black solid 2px;
+}
+
+td, th {
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    text-align: center;
+}
+
+#TableHeader {
+    padding: 0px;
+    border-bottom: 0px;
+}
